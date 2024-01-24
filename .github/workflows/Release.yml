@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{steps.version.outputs.version}}
-      minor_version: ${{steps.version.outputs.minor_version}}
+      major_version: ${{steps.version.outputs.major_version}}
     steps:
       - name: Determine the version
         id: version
@@ -30,7 +30,7 @@ jobs:
             PATCH_VERSION=${BASH_REMATCH[3]}
             echo "Major: $MAJOR_VERSION, Minor: $MINOR_VERSION, Patch: $PATCH_VERSION"
             echo "version=$MAJOR_VERSION.$MINOR_VERSION.$PATCH_VERSION" >> $GITHUB_OUTPUT
-            echo "minor_version=$MINOR_VERSION" >> $GITHUB_OUTPUT
+            echo "major_version=$MAJOR_VERSION" >> $GITHUB_OUTPUT
           else
             echo "::error::Invalid version format for $VERSION. Expected format is v1.0.0"
             exit 1
@@ -55,4 +55,4 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: wrapper
-          arguments: publish -Pversion=${{ needs.configure.outputs.version }} -PARTIFACT_VARIANT=${{ needs.configure.outputs.minor_version }} -PGITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -PGITHUB_USER=${{ github.actor }}
+          arguments: publish -Pversion=${{ needs.configure.outputs.version }} -PARTIFACT_VARIANT=${{ needs.configure.outputs.major_version }} -PGITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -PGITHUB_USER=${{ github.actor }}
