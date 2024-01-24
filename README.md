@@ -3,6 +3,9 @@
 Genererer kotlin-klasser basert på schema.json schema kontrakter. Brukes til elektronisk samhandling mellom politiet,
 kriminalomsorgen og domstolene
 
+# Versjonering
+Bump major ved hver av de gamle versjonene hentet fra https://github.com/domstolene/ESAS
+
 # Kontrakter
 
 Forklaring på kontrakter og meldinger som er definert i dette prosjektet.
