@@ -1,1 +1,1 @@
-rootProject.name = "esas-genererte-kontrakter"
+rootProject.name = "esas-kontrakter"

@@ -22,6 +22,7 @@ repositories {
 
 val GITHUB_USER: String by project
 val GITHUB_TOKEN: String by project
+val ARTIFACT_VARIANT: String = project.findProperty("ARTIFACT_VARIANT") as String? ?: "x"
 
 sourceSets.main.configure {
     kotlin.srcDirs(layout.buildDirectory.dir("generated-sources/kotlin"))
@@ -41,7 +42,7 @@ publishing {
     repositories {
         maven {
             name = project.name
-            url = uri("https://maven.pkg.github.com/domstolene/esas-genererte-kontrakter")
+            url = uri("https://maven.pkg.github.com/domstolene/esas-kontrakter")
             credentials {
                 username = GITHUB_USER
                 password = GITHUB_TOKEN
@@ -52,7 +53,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "no.domstol"
-            artifactId = project.name
+            artifactId = "${project.name}-v$ARTIFACT_VARIANT"
             from(components["java"])
             pom {
                 licenses {
@@ -65,4 +66,3 @@ publishing {
         }
     }
 }
-
