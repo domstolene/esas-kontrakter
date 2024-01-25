@@ -3,7 +3,30 @@
 Genererer kotlin-klasser basert på schema.json schema kontrakter. Brukes til elektronisk samhandling mellom politiet,
 kriminalomsorgen og domstolene
 
+# Publisering, artifacts og strategi
+
+Det publiseres egen artifact for hver release. Eksemepl: v1.0.0 -> no.domstol.esas-kontrakter-v1.
+Formålet med dette er å kunne bruke flere versjoner av kontraktene i samme applikasjon.
+Ved å ha separat artifact vil man unngå navnerom-problemer i bygd kode.
+
+**Hvis ikke blir det feil, fordi:** 
+
+Hvis man publiserer flere versjoner av samme artifact: 
+
+Eksempel:
+- no.domstol.esas-kontrakter:1.0.0
+- no.domstol.esas-kontrakter:1.1.0
+
+og prøver importere dette så vil det "se ut til å" fungere  
+å hente inn flere versjoner fra samme artifact. Dette gjøres typisk ved å importere en versjon i hver sin 
+applikasjonsmodul og dette vil se bra ut når man sitter og lager kode.
+**Ved bygging og distribusjon vil kun høyeste versjon være tilgjengelig i den pakken som skal distribueres (.tar).
+Eksempel hvor dette ligger: build/distributions/service.tar**
+
+Da vil all bruk av kontrakter i applikasjonen være basert på høyeste versjon og det blir feil.
+
 # Versjonering
+
 Bump major ved hver av de gamle versjonene hentet fra https://github.com/domstolene/ESAS
 
 # Kontrakter
