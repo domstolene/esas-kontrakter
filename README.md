@@ -27,7 +27,11 @@ Da vil all bruk av kontrakter i applikasjonen være basert på høyeste versjon 
 
 # Versjonering
 
-Bump major ved hver av de gamle versjonene hentet fra https://github.com/domstolene/ESAS
+Det er brukt en ny major for hver av de gamle versjonene hentet fra https://github.com/domstolene/ESAS
+- 1.0.0 -> 1.0.0
+- 1.1.0 -> 2.0.0
+- 1.2.0 -> 3.0.0
+- 1.3.0 -> 4.0.0
 
 # Kontrakter
 
